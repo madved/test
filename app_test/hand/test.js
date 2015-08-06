@@ -32,16 +32,16 @@ function render () {
   var minuteHand = scene.get_object_by_name("minute_hand");
 	var secondHand = scene.get_object_by_name("second_hand");
 
-  var hours    = (15 * now.getHours()) * (Math.PI / 90);
+  var hours    = (15 / 6 * now.getHours()) * (Math.PI / 15); // now.getHours()
   var minutes  = (6 * now.getMinutes()) * (Math.PI / 180);
 	var seconds  = (6 * now.getSeconds()) * (Math.PI / 180);
   var milisec  = (6 * now.getMilliseconds()) * (Math.PI / 180);
-  var hourAngle   = (hours * 1) + (minutes / 60) + (seconds / 60 / 60);
+  var hourAngle   = (hours * 1) + (minutes / 60 * 5) + (seconds / 60 / 60 * 5);
   var minuteAngle = (minutes * 1) + (seconds / 60) + (milisec / 60000);
   var secondAngle = (seconds * 1) + (milisec / 1000);
     transform.set_rotation_euler(hourHand, 0, 0, hourAngle);
     transform.set_rotation_euler(minuteHand, 0, 0, minuteAngle);
     transform.set_rotation_euler(secondHand, 0, 0, secondAngle);
 
-console.log(hourAngle);
+console.log(hours);
 }
